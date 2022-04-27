@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Checkout Code
         run: |
+                git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY -b gh-pages dir
+                cd dir
                 git config --global user.name "gh-pages"
                 git config --global user.name "gh-pages@example.com"
-                mkdir dir
-                git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY -b gh-pages dir
                 date > date
                 git add -A
                 git commit -m updated
