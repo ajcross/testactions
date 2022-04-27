@@ -9,16 +9,18 @@ jobs:
   Deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        run: |
-                git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY -b gh-pages dir
+      - name: Checkout gh-pages
+        run: git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY -b gh-pages dir
+      - name: Setup commit
+        run: | 
                 cd dir
-                git config --global user.name "gh-pages"
-                git config --global user.name "gh-pages@example.com"
-                date > date
-                git add -A
-                git commit -m updated
-                git push origin gh-pages
+                pwd
+
+      - name: Push 
+        run: |
+                pwd
+                cd dir
+                pwd
 
 
 
