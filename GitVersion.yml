@@ -9,4 +9,5 @@ branches:
     mode: ContinuousDelivery
     tag: 
     increment: Patch
+    is-release-branch: true
 
