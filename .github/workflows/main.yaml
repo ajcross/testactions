@@ -39,4 +39,4 @@ jobs:
           push: true 
           tags: |
             docker.io/${{ github.repository }}:latest
-            docker.io/${{ github.repository }}:${{ steps.gitversion.MajorMinorPatch }}
+            docker.io/${{ github.repository }}:${{ steps.gitversion.outputs.MajorMinorPatch }}
