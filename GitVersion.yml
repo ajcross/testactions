@@ -1,13 +1,2 @@
-mode: ContinuousDeployment
+mode: Mainline
 branches: {}
-ignore:
-  sha: []
-merge-message-formats: {}
-branches:
-  main:
-    regex: ^master$|^main$
-    mode: ContinuousDeployment
-    tag: 
-    increment: Patch
-    is-release-branch: true
-
