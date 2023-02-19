@@ -5,7 +5,6 @@ import(
 )
 
 func main() {
-	// comment
   fmt.Println("Hello World gitv!")
 }
 
