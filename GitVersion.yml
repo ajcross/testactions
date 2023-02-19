@@ -6,7 +6,7 @@ merge-message-formats: {}
 branches:
   main:
     regex: ^master$|^main$
-    mode: ContinuousDelivery
+    mode: ContinuousDeployment
     tag: 
     increment: Patch
     is-release-branch: true
