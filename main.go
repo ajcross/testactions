@@ -4,7 +4,7 @@ import(
   "fmt"
 )
 
-func main() {
+XXfunc main() {
   fmt.Println("Hello World gitv!")
 }
 
