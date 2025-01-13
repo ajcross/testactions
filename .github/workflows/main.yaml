@@ -25,18 +25,6 @@ jobs:
         with:
           useConfigFile: true
 
-      - name: Create Git tag 
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: "refs/tags/${{ steps.gitversion.outputs.MajorMinorPatch }}",
-              sha: context.sha
-            })
-
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -68,3 +56,14 @@ jobs:
             docker.io/${{ github.repository }}:latest
             docker.io/${{ github.repository }}:${{ steps.gitversion.outputs.MajorMinorPatch }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Create Git tag 
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ steps.gitversion.outputs.MajorMinorPatch }}",
+              sha: context.sha
+            })
