@@ -1,0 +1,37 @@
+name: Deploy Docker
+
+on: 
+  push:
+    branches: 
+      - main
+
+jobs:
+  Tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.15
+        with: 
+          versionSpec: '5.x'
+
+      - name: GitVersion
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.15
+        with:
+          useConfigFile: true
+
+      - name: Create Git tag 
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ steps.gitversion.outputs.MajorMinorPatch }}",
+              sha: context.sha
+            })
