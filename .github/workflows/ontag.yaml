@@ -1,9 +1,7 @@
 name: Build and push
 
 on: 
-  create:
-    tags: 
-      - "**"
+  create
 
 jobs:
   Deploy:
